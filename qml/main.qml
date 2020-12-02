@@ -20,4 +20,10 @@ Window {
         visible: false
     }
 
+    // ==================== iporting cypher item here ====================================
+    Cypher {
+        id: id_cypher
+        x: root.width / 2
+    }
+
 }

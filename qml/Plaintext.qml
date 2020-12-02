@@ -16,17 +16,17 @@ Item {
         anchors.fill: parent
         radius: 5
     }
-    DropShadow {
-        anchors.fill: label_mass.x
-    //        cached: true
-        horizontalOffset: 5
-        verticalOffset: 5
-        radius: 8
-        samples: 17
-        width: root.width
-        color: "#80000000"
-        source: label_mass.x
-    }
+//    DropShadow {
+//        anchors.fill: label_mass.x
+//    //        cached: true
+//        horizontalOffset: 5
+//        verticalOffset: 5
+//        radius: 8
+//        samples: 17
+//        width: root.width
+//        color: "#80000000"
+//        source: label_mass.x
+//    }
     Text {
         id: text_title
         y: root.height * .08
