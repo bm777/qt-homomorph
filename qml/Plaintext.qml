@@ -17,17 +17,7 @@ Item {
         anchors.fill: parent
         radius: 5
     }
-//    DropShadow {
-//        anchors.fill: label_mass.x
-//    //        cached: true
-//        horizontalOffset: 5
-//        verticalOffset: 5
-//        radius: 8
-//        samples: 17
-//        width: root.width
-//        color: "#80000000"
-//        source: label_mass.x
-//    }
+
     Text {
         id: text_title
         y: root.height * .08
@@ -94,6 +84,7 @@ Item {
                 font.pointSize: 25
             }
         }
+
         TextField {
             id: input_mass
             width: item_mass.width * 0.58
@@ -105,6 +96,17 @@ Item {
             placeholderText: "digit here"
             horizontalAlignment: "AlignHCenter"
         }
+    }
+    Rectangle {
+        id: r1
+        width: item_mass.height * 0.4
+        height: item_mass.height * 0.4
+        y: item_mass.y + item_mass.height * 0.5 - r1.height * 0.5
+        x: item_mass.x - r1.width
+        radius: r1.height * 0.5
+        color: "transparent"
+        border.color: "white"
+        border.width: item_mass.height * 0.05
     }
     // ========================================================================================
     // ========================== form =======================================
@@ -168,6 +170,19 @@ Item {
             horizontalAlignment: "AlignHCenter"
         }
     }
+    Rectangle {
+        id: r2
+        width: item_velocity.height * 0.4
+        height: item_velocity.height * 0.4
+        y: item_velocity.y + item_velocity.height * 0.5 - r2.height * 0.5
+        x: item_velocity.x - r2.width
+        radius: r2.height * 0.5
+        color: "transparent"
+        border.color: "white"
+        border.width: item_velocity.height * 0.05
+    }
+
+
     // ==============================================================================================
     Item {
         id: btn
