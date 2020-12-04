@@ -7,6 +7,7 @@ Item { // size controlled by width
     id: root
 
 // public
+
     property variant headerModel: [ // widths must add to 1
 
     ]
@@ -14,19 +15,19 @@ Item { // size controlled by width
     property variant dataModel: [
 
     ]
-
+    property string  external: ""
+    property bool st: false
     signal clicked(int row, variant rowData);  //onClicked: print('onClicked', row, JSON.stringify(rowData))
 
 // private
-    width: parent.width * 0.98;  height: 400
+    width: parent.width * 0.98;  height: 300
 
 
     Rectangle {
         id: header
 //        x: root.width * 0.1
         width: parent.width;  height: 30
-        color: '#6c5ce7'
-        radius: 0.01 * root.width
+        color: '#6000ff00' //6c5ce7
 
         Rectangle { // half height to cover bottom rounded corners
             width: parent.width;  height: 0.5 * parent.height
@@ -50,7 +51,7 @@ Item { // size controlled by width
                     text: modelData.text
                     anchors.verticalCenter: parent.verticalCenter
                     font.pixelSize:  14 //0.06 * root.width
-                    color: 'white'
+                    color: 'black'
                 }
             }
         }
@@ -97,45 +98,20 @@ Item { // size controlled by width
 
                 onClicked:  {
                     root.clicked(row, rowData)
+                    external = rowData[1]
+                    st = true
+                    print(external)
                 }
             }
         }
-        Rectangle {
-            width: root.width; height: root.height * 0.5
-            color: "transparent"
-            border.color: "#780000ff"
-        }
 
-        ScrollBar{}
+
+        ScrollBar {}
 
     }
-//    // ========================operation=================================================
-//    TextField {
-//        id: input_operation
-//        placeholderText: "Nom de l'opération"
-//        x: 0re
-//        y: root.height
-//        background: Rectangle {
-//             implicitWidth: header.width * 5 / 7
-//             implicitHeight: 40
-//             radius: 3
-//             color: input_operation.enabled ? "transparent" : "#780000ff"
-//             border.color: input_operation.enabled ? "#780000ff" : "transparent"
-//        }
-//    }
-
-//    // ========================valeur======================================================
-//    TextField {
-//        id: input_val
-//        placeholderText: "Valeur Unitaire"
-//        x: input_operation.width
-//        y: root.height
-//        background: Rectangle {
-//             implicitWidth: header.width * 2 / 7
-//             implicitHeight: 40
-//             radius: 3
-//             color: input_val.enabled ? "transparent" : "#780000ff"
-//             border.color: input_val.enabled ? "#780000ff" : "transparent"
-//        }
-//    }
+    Rectangle {
+        width: root.width; height: root.height * 1.1
+        color: "transparent"
+        border.color: "#780000ff"
+    }
 }

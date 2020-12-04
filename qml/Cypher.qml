@@ -15,7 +15,7 @@ Item {
     Item {
         id: item_mass
         width: root.width * 0.8
-        height: root.height * 0.08
+        height: root.height * 0.05
         anchors.horizontalCenter: parent.horizontalCenter
         y: root.height * 0.1
         Text {
@@ -23,7 +23,7 @@ Item {
             text: "Cypher of mass"
             color: "#f000001c"
             font.pointSize: 18
-            y: - parent.height * 0.37
+            y: - parent.height * 0.58
         }
         Rectangle {
             anchors.fill: text_mass
@@ -41,7 +41,7 @@ Item {
                 id: data_mass
                 color: "white"
                 y: item_mass.height *0.5 - data_mass.height * 0.5
-                font.pointSize: 18
+                font.pointSize: 14
                 text: " zenfk,re vkorei,fvio,relv lkfrbvlelbl,l elrv l erlfv l elv lefvlenbonllvefvrvbreb  kjlrn vljervnun,e ,: fs,:v ljfv "
             }
         }
@@ -52,7 +52,7 @@ Item {
     Item {
         id: item_velocity
         width: root.width * 0.8
-        height: root.height * 0.08
+        height: root.height * 0.05
         anchors.horizontalCenter: parent.horizontalCenter
         y: root.height * 0.25
         Text {
@@ -60,7 +60,7 @@ Item {
             text: "Cypher of velocity"
             color: "#f000001c"
             font.pointSize: 18
-            y: - parent.height * 0.37
+            y: - parent.height * 0.58
         }
         Rectangle {
             anchors.fill: text_velocity
@@ -78,7 +78,7 @@ Item {
                 id: data_velocity
                 color: "white"
                 y: item_velocity.height *0.5 - data_velocity.height * 0.5
-                font.pointSize: 18
+                font.pointSize: 14
                 text: " zenfk,re vkorei,fvio,relv lkfrbvlelbl,l elrv l erlfv l elv lefvlenbonllvefvrvbreb  kjlrn vljervnun,e ,: fs,:v ljfv "
             }
         }
@@ -90,12 +90,25 @@ Item {
         width: text_btn.width * 1.2
         height: text_btn.height * 1.5
         Rectangle {
+            id: cypher
             anchors.fill: parent
             color: "transparent"
             radius: 5
             visible: true
             border.color: "green"
             border.width: 2
+            MouseArea {
+                anchors.fill: cypher
+                onEntered: {
+                    cypher.color = "#8000ff00"
+                }
+                onExited: {
+                    cypher.color = "transparent"
+                }
+                onClicked: {
+
+                }
+            }
         }
         Text {
             id: text_btn
@@ -106,9 +119,24 @@ Item {
             font.pointSize: 22
         }
     }
+    Text {
+        id: math
+        font.pointSize: 13
+        text: "Calcul of moment using encrypted data:"
+        y: root.height * 0.5
+        x: root.width * 0.1
+    }
+    Text {
+        id: moment
+        textFormat: Text.RichText
+        font.pointSize: 17
+        text: "<b>CYPHER</b><SUB>moment</SUB> = <b>CYPHER</b><SUB>mass</SUB> x <b>CYPHER</b><SUB>velocity</SUB>"
+        y: root.height * 0.55
+        x: root.width * 0.15
+    }
     Table {
         id: table
-        y: root.height * 0.55
+        y: root.height * 0.65
         x: root.width * 0.01
         visible: true
         headerModel: [
@@ -125,8 +153,34 @@ Item {
             ['4',  'ejknefkjzernfk krkv kjf vkn fv kjh fvjkfchjv rbs', "2020/11/01 00:15:58"],
             ['5',  'ejknefkjzernfk krkv kjf vkn fv kjh fvjkfchjv rbs', "2020/11/01 00:15:59"],
             ['6',  'ejknefkjzernfk krkv kjf vkn fv kjh fvjkfchjv rbs', "2020/11/01 00:16:00"],
+            ['7',  'ejknefkjzernfk krkv kjf vkn fv kjh fvjkfchjv rbs', "2020/11/01 00:16:01"],
+            ['8',  'ejknefkjzernfk krkv kjf vkn fv kjh fvjkfchjv rbs', "2020/11/01 00:16:02"],
+            ['9',  'ejknefkjzernfk krkv kjf vkn fv kjh fvjkfchjv rbs', "2020/11/01 00:16:03"],
+            ['10',  'ejknefkjzernfk krkv kjf vkn fv kjh fvjkfchjv rbs', "2020/11/01 00:16:03"],
         ]
         onClicked: print('onClicked', row, JSON.stringify(rowData))
     }
+    Rectangle {
+        id: white
+        color: '#80000000'
+        anchors.fill: parent
+        visible: id_pop.visible
+
+    }
+    Pop {
+        id: id_pop
+        y: root.height * 0.3
+        x: root.width * 0.5 - id_pop.width / 2
+        visible: table.st
+
+        text: "The real PlainText is :<b>" + table.external + "</b>"
+        buttons: ['Cancel', 'Ok']
+
+        onClicked: {
+            table.st = true
+            visible = false
+        }
+    }
+
 
 }

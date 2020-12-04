@@ -9,6 +9,7 @@ Item {
     height: parent.height
     property real  mass: parseInt(input_mass.text)
     property real velocity: parseInt(input_velocity.text)
+    property bool start: false
 
     Rectangle {
         id: inside
@@ -174,14 +175,6 @@ Item {
         x: root.width * 0.5
         width: text_btn.width * 1.2
         height: text_btn.height * 1.5
-        Rectangle {
-            anchors.fill: parent
-            color: "#80000000"
-            radius: 5
-            visible: true
-            border.color: "green"
-            border.width: 2
-        }
         Text {
             id: text_btn
             anchors.horizontalCenter: btn.horizontalCenter
@@ -190,6 +183,29 @@ Item {
             color: "white"
             font.pointSize: 22
         }
+        Rectangle {
+            id: encrypt
+            anchors.fill: parent
+            color: "#80000000"
+            radius: 5
+            visible: true
+            border.color: "green"
+            border.width: 2
+
+            MouseArea {
+                anchors.fill: encrypt
+                onEntered: {
+                    encrypt.color = "#8000ff00"
+                }
+                onExited: {
+                    encrypt.color = "#80000000"
+                }
+                onClicked: {
+                    start = true
+                }
+            }
+        }
+
     }
 
 }
