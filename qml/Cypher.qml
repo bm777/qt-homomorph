@@ -1,5 +1,7 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.15
+import QtQuick.LocalStorage 2.15
+import "../js/script.js" as Code
 
 Item {
     id: root
@@ -106,7 +108,19 @@ Item {
                     cypher.color = "transparent"
                 }
                 onClicked: {
-
+                    var db = LocalStorage.openDatabaseSync("homomorph", "", "Homomorph encryption", 1000000);
+                    var moment = bridge.moment(data_mass.text, data_velocity.text);
+                    var now = new Date().toLocaleDateString(Qt.locale("fr_FR"))
+                    try {
+                        db.transaction(function (tx) {
+                            tx.executeSql('CREATE TABLE IF NOT EXISTS moments (id INTEGER PRIMARY KEY AUTOINCREMENT, moment TEXT, date DATE)');
+                            tx.executeSql('INSERT INTO moments (moment, date) VALUES (?,?)', [moment, now]);
+                            print("creating element into table user")
+                        })
+                    } catch (err) {
+                        console.log("Error creating or insert table in database: " + err)
+                    };
+                    user.dataModel = Code.fillUser();
                 }
             }
         }
@@ -174,7 +188,7 @@ Item {
         visible: table.st
 
         text: "The real PlainText is :<b>" + table.external + "</b>"
-        buttons: ['Cancel', 'Ok']
+        buttons: [ 'Ok']
 
         onClicked: {
             table.st = true

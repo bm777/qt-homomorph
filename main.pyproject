@@ -1,3 +1,3 @@
 {
-    "files": ["qml/Cypher.qml","qml/Plaintext.qml","qml/main.qml","qml/Table.qml","main.py","README.md","qml/ScrollBar.qml","qml/Pop.qml"]
+    "files": ["qml/Table.qml","README.md","qml/Pop.qml","qml/main.qml","qml/ScrollBar.qml","qml/Cypher.qml","qml/Plaintext.qml","main.py","js/script.js"]
 }
