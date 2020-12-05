@@ -100,7 +100,7 @@ Item { // size controlled by width
                     root.clicked(row, rowData)
                     external = rowData[1]
                     st = true
-                    print(external)
+//                    print(external)
                 }
             }
         }

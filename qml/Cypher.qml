@@ -7,6 +7,7 @@ Item {
     id: root
     width: parent.width / 2
     height: parent.height
+    property bool state_pop: id_pop.visible
 
 
     Rectangle {
@@ -161,38 +162,40 @@ Item {
 
         dataModel:
             [
-            ['1',  'ejknefkjzernfk krkv kjf vkn fv kjh fvjkfchjv rbs', "2020/11/01 00:15:55"],
-            ['2',  'ejknefkjzernfk krkv kjf vkn fv kjh fvjkfchjv rbs', "2020/11/01 00:15:56"],
-            ['3',  'ejknefkjzernfk krkv kjf vkn fv kjh fvjkfchjv rbs', "2020/11/01 00:15:57"],
-            ['4',  'ejknefkjzernfk krkv kjf vkn fv kjh fvjkfchjv rbs', "2020/11/01 00:15:58"],
-            ['5',  'ejknefkjzernfk krkv kjf vkn fv kjh fvjkfchjv rbs', "2020/11/01 00:15:59"],
-            ['6',  'ejknefkjzernfk krkv kjf vkn fv kjh fvjkfchjv rbs', "2020/11/01 00:16:00"],
-            ['7',  'ejknefkjzernfk krkv kjf vkn fv kjh fvjkfchjv rbs', "2020/11/01 00:16:01"],
-            ['8',  'ejknefkjzernfk krkv kjf vkn fv kjh fvjkfchjv rbs', "2020/11/01 00:16:02"],
-            ['9',  'ejknefkjzernfk krkv kjf vkn fv kjh fvjkfchjv rbs', "2020/11/01 00:16:03"],
-            ['10',  'ejknefkjzernfk krkv kjf vkn fv kjh fvjkfchjv rbs', "2020/11/01 00:16:03"],
+            ['1',  '1ejknefkjzernfk krkv kjf vkn fv kjh fvjkfchjv rbs', "2020/11/01 00:15:55"],
+            ['2',  '2ejknefkjzernfk krkv kjf vkn fv kjh fvjkfchjv rbs', "2020/11/01 00:15:56"],
+            ['3',  '3ejknefkjzernfk krkv kjf vkn fv kjh fvjkfchjv rbs', "2020/11/01 00:15:57"],
+            ['4',  '4ejknefkjzernfk krkv kjf vkn fv kjh fvjkfchjv rbs', "2020/11/01 00:15:58"],
+            ['5',  '5ejknefkjzernfk krkv kjf vkn fv kjh fvjkfchjv rbs', "2020/11/01 00:15:59"],
+            ['6',  '6ejknefkjzernfk krkv kjf vkn fv kjh fvjkfchjv rbs', "2020/11/01 00:16:00"],
+            ['7',  '7ejknefkjzernfk krkv kjf vkn fv kjh fvjkfchjv rbs', "2020/11/01 00:16:01"],
+            ['8',  '8ejknefkjzernfk krkv kjf vkn fv kjh fvjkfchjv rbs', "2020/11/01 00:16:02"],
+            ['9',  '9ejknefkjzernfk krkv kjf vkn fv kjh fvjkfchjv rbs', "2020/11/01 00:16:03"],
+            ['10',  '10ejknefkjzernfk krkv kjf vkn fv kjh fvjkfchjv rbs', "2020/11/01 00:16:03"],
         ]
-        onClicked: print('onClicked', row, JSON.stringify(rowData))
+        onClicked: {
+//            print('onClicked', row, JSON.stringify(rowData))
+             id_pop.visible = true
+        }
     }
     Rectangle {
         id: white
         color: '#80000000'
         anchors.fill: parent
-        visible: id_pop.visible
+        visible: state_pop
 
     }
     Pop {
         id: id_pop
         y: root.height * 0.3
         x: root.width * 0.5 - id_pop.width / 2
-        visible: table.st
+        visible: false
 
         text: "The real PlainText is :<b>" + table.external + "</b>"
         buttons: [ 'Ok']
 
         onClicked: {
-            table.st = true
-            visible = false
+            id_pop.visible = false
         }
     }
 
